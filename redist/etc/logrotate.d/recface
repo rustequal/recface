@@ -1,0 +1,11 @@
+/var/log/recface.log
+{
+    compress
+    dateext
+    rotate 10
+    missingok
+    notifempty
+    copytruncate
+    size +4096k
+    sharedscripts
+}

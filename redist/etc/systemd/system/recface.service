@@ -1,0 +1,15 @@
+[Unit]
+Description=Face Recognition Service
+Requires=display-manager.service
+After=syslog.target network.target display-manager.service
+
+[Service]
+Type=simple
+TimeoutSec=15s
+User=recface
+Group=recface
+WorkingDirectory=/opt/recface
+ExecStart=/opt/venv/recface/bin/python /opt/recface/recface.py
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+FD_TYPE = 'dlib_human' # 'dlib_frontal', 'dlib_human', 'trt_mtcnn'
+FD_SQUARE = True
+FD_MAXSIZE = 512
+IMG_ALIGNED_PREF = 'aligned'
+#MODEL_DATA = 'data/95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_model.uff'
+MODEL_DATA = 'data/95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_model.pb'
+MODEL_IMG_SIZE = 112
+MODEL_INPUT_NAME = 'x'
+MODEL_OUTPUT_NAME = 'Identity'
+USE_GPU = False
+TRT_MAX_WORKSPACE_SIZE = 536870912
+TRT_DIR = '/usr/lib/python3.6/dist-packages'
+CLF_PKL = 'data/classifier.pkl'
