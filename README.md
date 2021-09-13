@@ -131,6 +131,7 @@ IN-USE  SSID   MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
 > Choose your own Wi-Fi SSID and replace the word PASS with your Wi-Fi password:
 <pre>
 <b>user@jetson:~$ sudo nmcli dev wifi connect Zion5 password PASS</b>
+Device 'wlan0' successfully activated with '6abcef5f-bb1d-486d-9fc9-0c9057c47c71'.<br>
 <b>user@jetson:~$ nmcli con show</b>
 NAME                UUID                                  TYPE      DEVICE
 Zion5               6abcef5f-bb1d-486d-9fc9-0c9057c47c71  wifi      wlan0
@@ -382,16 +383,12 @@ Section "ServerFlags"
    Option "StandbyTime" "0"
    Option "SuspendTime" "0"
    Option "OffTime" "0"
-EndSection</i>
+EndSection</i><br>
+<b>user@jetson:~$ sudo reboot</b>
 </pre>
 
-> Enter the password for "recface" account that was set earlier:
+- Connect to Nano via SSH. Login as "recface". Enter the password that was set earlier.
 <pre>
-<b>user@jetson:~$ su recface</b>
-Password:
-To run a command as administrator (user "root"), use "sudo <command>".
-See "man sudo_root" for details.
-<b>recface@jetson:/home/user$ cd</b>
 <b>recface@jetson:~$ mkdir -p ~/.config/autostart</b>
 <b>recface@jetson:~$ cp /usr/share/applications/vino-server.desktop ~/.config/autostart/</b>
 <b>recface@jetson:~$ gsettings set org.gnome.Vino prompt-enabled false</b>
