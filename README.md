@@ -995,8 +995,9 @@ Bindings for det3 after deserializing:
   Output 3: prob1, 2x1x1
 Done.<br>
 <b>(recface) recface@jetson:/opt/recface/mtcnn$ cd</b>
-<b>(recface) recface@jetson:~$ sudo systemctl start recface</b>
-<b>(recface) recface@jetson:~$ tail -f /var/log/recface.log</b>
+<b>(recface) recface@jetson:~$ deactivate</b><br>
+<b>recface@jetson:~$ sudo systemctl start recface</b>
+<b>recface@jetson:~$ tail -f /var/log/recface.log</b>
 2021-08-25 14:08:52 INFO Starting Face Recognition service
 2021-08-25 14:08:52 INFO Loading "trt_ssd" face detector model
 2021-08-25 14:08:52 INFO Using TensorRT engine 7.1.3.0 (GPU) for face detection
