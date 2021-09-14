@@ -884,7 +884,10 @@ wheel (0.37.0)<br>
 <details>
 <summary>Installing the "recface" runtime</summary>
 <br>
+
+- Connect to Nano via SSH. Login as "recface".
 <pre>
+<b>recface@jetson:~$ source /opt/venv/recface/bin/activate</b>
 <b>(recface) recface@jetson:~$ git clone https://github.com/rustequal/recface.git</b>
 Cloning into 'recface'...
 remote: Enumerating objects: 69, done.
