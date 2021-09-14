@@ -1015,6 +1015,8 @@ Done.<br>
 - Connect to network share "images" via samba. For example:
   - on Windows: \\\\192.168.179.21
   - on MacOS: smb://192.168.179.21
+
+> If you want to slightly increase the runtime performance, you can activate the "jetson clocks" mode through the [jtop](https://github.com/rbonghi/jetson_stats#controls) utility. You need to press "s" and "e" on the "5 CTRL" page. Keep in mind that the performance increase will be ~ 1 FPS, but at the same time the heating of the platform and the consumption of electricity will increase.
 </details>
 
 <details>
