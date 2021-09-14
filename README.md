@@ -7,7 +7,7 @@ The face recognition system for NVIDIA Jetson Nano. What this system can do:
 - Sends the embedding to a pre-trained classifier in order to determine whether a person belongs to a known class.
 - If the embedding belongs to a person existing in the classifier database, a banner is displayed about successful recognition.
 - Sends a control signal for the electronic lock system to connector "J41".
-- For face detection and recognition, it uses the [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt) library for the best performance.
+- The face detection and recognition models use the [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt) library for better performance.
 - Contains utilities for creating a classifier database from person images.
 
 What this system can't do:
@@ -61,7 +61,7 @@ Performance:
 
 ## Installation
 
-The project is optimized to work with [NVIDIA JetPack 4.5](https://developer.nvidia.com/jetpack-sdk-45-archive). If you want to use other versions of "JetPack", then you need to change the project code to work with other versions of the TensorRT library. The project code works with the TensorRT library version 7.1. Next, a step-by-step installation of the software from scratch will be described:
+The project is optimized to work with [NVIDIA JetPack 4.5](https://developer.nvidia.com/jetpack-sdk-45-archive). If you want to use other versions of "JetPack", then you need to change the project code to work with other versions of the "TensorRT" library. The project code works with the "TensorRT" library version 7.1. Next, a step-by-step installation of the software from scratch will be described:
 <details>
 <summary>JetPack SDK installation procedure</summary>
 <p><br>
@@ -428,8 +428,8 @@ Do you want to continue? [Y/n] y<br>
 </pre>
 
 - Connect to Nano via VNC client ([TightVNC](https://tightvnc.com/) for example). Enter the password that was set earlier.
-- In the VNC window go to the menu "Preferences - Screensaver"
-- Set the MODE setting to "Disable Screen Saver"
+- In the VNC window go to the menu "Preferences - Screensaver".
+- Set the "Mode" setting to "Disable Screen Saver".
 </details>
 
 <details>
@@ -1012,7 +1012,7 @@ Done.<br>
 </pre>
 
 - Connect to Nano via VNC client. The video from the camera should be displayed on the screen and face detection should work. If not, see the "Troubleshooting" section.
-- Connect to network share "images" via samba. For example:
+- Connect to network share "images" via SMB protocol. For example:
   - on Windows: \\\\192.168.179.21
   - on MacOS: smb://192.168.179.21
 
@@ -1224,11 +1224,11 @@ This section will describe the methods for preparing a dataset with images, trai
 <p><br>
 To train the classifier, you need to prepare and align the dataset with the face images. The folder structure of the dataset must comply with certain rules:
 
-- The name of the dataset root folder must match the name of the dataset
+- The name of the dataset root folder must match the name of the dataset.
 - The root folder must contain subfolders corresponding to the persons.
 - The person subfolders must contain face images in the "jpg" format. The image should have one clearly distinguishable person's face. The recommended number of images for training the classifier should be 15-30 images for each person.<br>
 
-An example of the structure of folders and images can be viewed in the folder "images/dataset". The "images" folder is the public network share and is available for connection via the Samba protocol. Your dataset should have a similar structure.<br>
+An example of the structure of folders and images can be viewed in the folder "images/dataset". The "images" folder is the public network share and is available for connection via the SMB protocol. Your dataset should have a similar structure.<br>
 </p>
 <p align="center">
   <a href="#"><img src="docs/Kit1c.jpg" /></a>
@@ -1505,9 +1505,9 @@ CONSUMER: Producer has connected; continuing.
 [ WARN:0] global /home/recface/opencv-4.5.3/opencv/modules/videoio/src/cap_gstreamer.cpp (1081) open OpenCV | GStreamer warning: Cannot query video position: status=0, value=-1, duration=-1
 </pre>
 
-- Connect to Nano via VNC. During normal operation the video from the camera should be displayed in the VNC window.<br>
+> During normal operation the video from the camera should be displayed on the monitor or in the VNC window.<br>
 
-If there are errors in the script output or video is not displayed in the VNC window, then you need to correct the <a href="simple_camera.py" target="_blank">simple_camera.py</a> script. If the error is related to an incorrect GStreamer pipeline, then you can debug the pipeline with the following command:
+If there are errors in the script output or video is not displayed, then you need to correct the <a href="simple_camera.py" target="_blank">simple_camera.py</a> script. If the error is related to an incorrect "GStreamer" pipeline, then you can debug the pipeline with the following command:
 <pre>
 <b>(recface) recface@jetson:/opt/recface$ gst-launch-1.0 nvarguscamerasrc ! 'video/x-raw(memory:NVMM), width=(int)1280, height=(int)720, format=(string)NV12, framerate=(fraction)30/1' ! nvvidconv flip-method=0 ! 'video/x-raw, width=(int)1280, height=(int)720, format=(string)BGRx' ! videoconvert ! appsink</b>
 Setting pipeline to PAUSED ...
@@ -1535,10 +1535,10 @@ CONSUMER: Producer has connected; continuing.
 </pre>
 You need to do:
 
-- Adjust the GStreamer pipeline to work normally with your camera.
+- Adjust the "GStreamer" pipeline to work normally with your camera.
 - Modify the script <a href="simple_camera.py" target="_blank">simple_camera.py</a> with new pipeline parameters. Get it to work properly.
 - Move the pipeline code from script <a href="simple_camera.py" target="_blank">simple_camera.py</a> to script <a href="recface.py" target="_blank">recface.py</a>.
-- Check the work of your GStreamer pipeline with the "recface" runtime.
+- Check the work of your "GStreamer" pipeline with the "recface" runtime.
 </details>
 
 <details>
