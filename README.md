@@ -920,7 +920,7 @@ After this operation, 32,8 MB of additional disk space will be used.
 Do you want to continue? [Y/n] y<br>
 <b>(recface) recface@jetson:/opt/recface$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak</b>
 <b>(recface) recface@jetson:/opt/recface$ sudo cp redist/etc/samba/smb.conf /etc/samba/</b>
-<b>(recface) recface@jetson:~$ sudo service smbd restart</b><br>
+<b>(recface) recface@jetson:/opt/recface$ sudo service smbd restart</b><br>
 <b>(recface) recface@jetson:/opt/recface$ make</b>
 python3 setup.py build_ext -if
 Compiling pytrt.pyx because it changed.
