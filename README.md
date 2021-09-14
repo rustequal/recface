@@ -996,13 +996,24 @@ Bindings for det3 after deserializing:
 Done.<br>
 <b>(recface) recface@jetson:/opt/recface/mtcnn$ cd</b>
 <b>(recface) recface@jetson:~$ sudo systemctl start recface</b>
+<b>(recface) recface@jetson:~$ tail -f /var/log/recface.log</b>
+2021-08-25 14:08:52 INFO Starting Face Recognition service
+2021-08-25 14:08:52 INFO Loading "trt_ssd" face detector model
+2021-08-25 14:08:52 INFO Using TensorRT engine 7.1.3.0 (GPU) for face detection
+2021-08-25 14:09:11 INFO Loading model from "data/95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_model.uff"
+2021-08-25 14:09:11 INFO Using TensorRT engine 7.1.3.0 (GPU) for face recognition
+2021-08-25 14:09:28 INFO Loading classifier from "data/classifier.pkl"
+2021-08-25 14:09:31 INFO The classifier was loaded successfully for 3 classes
+2021-08-25 14:09:31 INFO Setup the GUI window
+2021-08-25 14:09:31 INFO Opening the camera device
+2021-08-25 14:09:36 INFO Camera device was opened successfully
+2021-08-25 14:09:36 INFO Running the main loop ...
 </pre>
 
 - Connect to Nano via VNC client. The video from the camera should be displayed on the screen and face detection should work. If not, see the "Troubleshooting" section.
 - Connect to network share "images" via samba. For example:
   - on Windows: \\\\192.168.179.21
   - on MacOS: smb://192.168.179.21
-- The "recface" log can be viewed in the file "/var/log/recface.log".
 </details>
 
 <details>
@@ -1390,7 +1401,7 @@ The "recface" runtime configuration parameters are located in file <a href="recf
 **TITLER_FRAMES** - During this number of frames the banner text will be displayed.
 
 **TITLER_TOTAL** - During this number of frames, a full cycle of the banner for the recognized face will take. The banner appearance scheme is as follows:
-  - Banner with text appears at the time of "TITLER_FRAMES" frames
+  - Banner with text appears at the time of "TITLER_FRAMES" frames.
   - If there is no other recognized face in the queue, the banner disappears.
   - If there is one more recognized face in the queue, then a banner with the text for this face appears.
   - After the banner disappears, it must take time to complete the cycle in "TITLER_TOTAL" frames.
