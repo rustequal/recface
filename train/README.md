@@ -1,4 +1,4 @@
-The information on this page describes the process of training the model. If you are not going to train the model, then you do not need the scenarios described here. For training, it is recommended to have a high-performance PC with a powerful GPU. I trained the model using the "Google Colab Pro" service. If you use a NVIDIA V100 GPU, then the training time of one epoch is about 95 minutes. For training I used the Tensorflow 2.4 framework.
+The information on this page describes the process of training the model. If you are not going to train the model, then you do not need the scenarios described here. For training, it is recommended to have a high-performance PC with a powerful GPU. I trained the model using the "Google Colab Pro" service. If you use a "NVIDIA Tesla V100" GPU, then the training time of one epoch is about 95 minutes. For training I used the "Tensorflow 2.4" framework.
 
 ## Preparing the python environment
 
@@ -184,7 +184,7 @@ The information on this page describes the process of training the model. If you
   tf.config.experimental.set_memory_growth(physical_devices[0], True)
   tf.config.experimental.enable_tensor_float_32_execution(False)</i>
   </pre>
-  > The last line is needed in case of using NVIDIA GPU based on Ampere chip and newer to disable the "TensorFloat-32" feature.
+  > The last line is needed in case of using NVIDIA GPU based on "Ampere" chip and newer to disable the "TensorFloat-32" feature.
 - Download the file [mmod_human_face_detector.dat](https://github.com/davisking/dlib-models) to "recface/train" directory (you need to unpack the "mmod_human_face_detector.dat.bz2" archive):
   <pre>
   <b>(recface) user@dev:~/recface/train$ bzip2 -d mmod_human_face_detector.dat.bz2</b>
@@ -206,7 +206,7 @@ The information on this page describes the process of training the model. If you
   <b>(recface) user@dev:~/recface/train$ python ./tools/rec2jpg.py faces_emore faces_emore_jpg</b>
   </pre>
 - Run the "JupyterLab" session, navigate the "File Browser" to directory "recface/train".
-- Duplicate the "recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb" notebook.
+- Duplicate the [recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb](recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb) notebook.
 - Rename the duplicated notebook to "ms1mv2_bin.ipynb".
 - Open the duplicated notebook "ms1mv2_bin.ipynb".
 - Clear all outputs in this new notebook.
@@ -259,7 +259,7 @@ Prepare your own 16-person friend faces dataset. The rules:
 - The recommended number of images is 20 per person in the "train" subset and 10 per person in the "test" subset. The images must be unique for the two subsets.
 - Name the dataset directory "friends_16".
 
-## Creating the "friends_16_test_dlib.bin" and "friends_16_test_mtcnn_sq.bin" datasets
+## Creating the test "friends_16_test_dlib.bin" and "friends_16_test_mtcnn_sq.bin" datasets
 
 - Prepare the working directories of the datasets:
   <pre>
@@ -267,7 +267,7 @@ Prepare your own 16-person friend faces dataset. The rules:
   <b>(recface) user@dev:~/recface/train$ cp -r friends_16 friends_16_mtcnn_sq</b>
   </pre>
 - Run the "JupyterLab" session, navigate the "File Browser" to directory "recface/train".
-- Duplicate the "recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb" notebook.
+- Duplicate the [recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb](recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb) notebook.
 - Rename the duplicated notebook to "friends_16.ipynb".
 - Open the duplicated notebook "friends_16.ipynb".
 - Clear all outputs in this new notebook.
@@ -320,7 +320,7 @@ Prepare your own 16-person friend faces dataset. The rules:
   > If errors occurred during the alignment of images, then you need to find other images so that the face detector can detect the face without errors. Or, reduce the resolution of the images in case of an out of memory error.
 - The dataset "friends_16_test_mtcnn_sq.bin" with 720 positive and 720 negative pairs must be created in the current directory.
 
-## Creating aligned versions of the "lfw.bin" and "agedb_30.bin" datasets
+## Creating aligned versions of the test "lfw.bin" and "agedb_30.bin" datasets
 
 - Duplicate the original datasets:
   <pre>
@@ -330,7 +330,7 @@ Prepare your own 16-person friend faces dataset. The rules:
   <b>(recface) user@dev:~/recface/train$ cp agedb_30.bin agedb_30_mtcnn_sq.bin</b>
   </pre>
 - Run the "JupyterLab" session, navigate the "File Browser" to directory "recface/train".
-- Duplicate the "recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb" notebook.
+- Duplicate the [recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb](recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb) notebook.
 - Rename the duplicated notebook to "align_bin.ipynb".
 - Open the duplicated notebook "align_bin.ipynb".
 - Clear all outputs in this new notebook.
@@ -396,12 +396,12 @@ Prepare your own 16-person friend faces dataset. The rules:
 ## Testing the model using aligned datasets
 
 - Run the "JupyterLab" session, navigate the "File Browser" to directory "recface/train".
-- Duplicate the "recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb" notebook.
+- Duplicate the [recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb](recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb) notebook.
 - Rename the duplicated notebook to "testing_datasets.ipynb".
 - Open the duplicated notebook "testing_datasets.ipynb".
 - Clear all outputs in this new notebook.
 - Run the cells: 2, 7, 8, 10, 11, 20, 25
-> If you want to test the model using unaligned datasets then use the same guide, but duplicate the "recface_95_Default_MobileFaceNetV2_ArcFace_planF_batch256_EN.ipynb" notebook.
+> If you want to test the model using unaligned datasets then use the same guide, but duplicate the [recface_95_Default_MobileFaceNetV2_ArcFace_planF_batch256_EN.ipynb](recface_95_Default_MobileFaceNetV2_ArcFace_planF_batch256_EN.ipynb) notebook.
 
 ## Creating and testing a classifier
 
@@ -413,7 +413,7 @@ Prepare your own 16-person friend faces dataset. The rules:
   <b>(recface) user@dev:~/recface/train$ cp -r Others friends_16_mtcnn_sq/test/</b>
   </pre>
 - Run the "JupyterLab" session, navigate the "File Browser" to directory "recface/train".
-- Duplicate the "recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb" notebook.
+- Duplicate the [recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb](recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb) notebook.
 - Rename the duplicated notebook to "testing_clf.ipynb".
 - Open the duplicated notebook "testing_clf.ipynb".
 - Clear all outputs in this new notebook.
@@ -456,9 +456,9 @@ Prepare your own 16-person friend faces dataset. The rules:
 
 ## Training the model
 
-- To train the model, you will need a training dataset, aligned datasets, aligned directories with images for classifier validation, so it's recommended to run all the previous scenarios in order to prepare the data.
+- To train the model, you will need a training dataset, aligned test datasets, aligned directories with images for classifier validation, so it's recommended to run all the previous scenarios in order to prepare the data.
 - Run the "JupyterLab" session, navigate the "File Browser" to directory "recface/train".
-- Duplicate the "recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb" notebook.
+- Duplicate the [recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb](recface_95_dlib_continued_MobileFaceNetV2_ArcFace_planH_batch256_EN.ipynb) notebook.
 - Rename the duplicated notebook to "training.ipynb".
 - Open the duplicated notebook "training.ipynb".
 - Clear all outputs in this new notebook.
